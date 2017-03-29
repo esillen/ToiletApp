@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import java.util.Date;
+
+import edu.sk.esillen.toiletapp.table_entries.ToiletCheckin;
+
 public class PoopingActivity extends AppCompatActivity {
 
     @Override
@@ -14,10 +18,10 @@ public class PoopingActivity extends AppCompatActivity {
     }
 
 
-
-
-
     public void commit(View view){
+
+        ToiletCheckin tc = new ToiletCheckin(new Date());
+        tc.save();
 
         Log.d("POOPING ACTIVITY", "commited");
 
