@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.sk.esillen.toiletapp.PoopingActivity">
+
+    <SeekBar
+        android:id="@+id/timeBar"
+        android:layout_width="160dp"
+        android:layout_height="17dp"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="64dp"/>
+
+    <SeekBar
+        android:id="@+id/pooBar"
+        android:layout_width="160dp"
+        android:layout_height="18dp"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="203dp"/>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="commit"
+        android:text="Commit"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="283dp"/>
+
+    <Switch
+        android:id="@+id/pooSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="number 2?  "
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="129dp"/>
+</android.support.constraint.ConstraintLayout>
