@@ -93,24 +93,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekBar7"/>
 
-        <shape
-            android:id="@+id/shape"
-            android:layout_width="72dp"
-            android:layout_height="58dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="9dp"
-            android:shape="oval"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar8"
-            tools:layout_editor_absoluteY="131dp">
-
-            <gradient
-                android:angle="270"
-                android:endColor="#80FF00FF"
-                android:startColor="#FFFF0000"/>
-        </shape>
 
 
     </android.support.constraint.ConstraintLayout>
