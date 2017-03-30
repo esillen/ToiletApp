@@ -23,16 +23,18 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="edu.derp.esillen.toiletapp"/>
 
-        <activity android:name="edu.derp.esillen.toiletapp.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="edu.derp.esillen.toiletapp.PoopingActivity">
+        <activity android:name=".PoopingActivity">
         </activity>
-        <activity android:name="edu.derp.esillen.toiletapp.GraphsActivity">
+        <activity android:name=".GraphsActivity">
+        </activity>
+        <activity android:name=".PoopLogActivity">
         </activity>
     </application>
 

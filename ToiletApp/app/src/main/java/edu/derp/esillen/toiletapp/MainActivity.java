@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.orm.SchemaGenerator;
+import com.orm.SugarContext;
+import com.orm.SugarDb;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public void checkin(View view){
         Intent intent = new Intent(this, PoopingActivity.class);
         startActivity(intent);
+        // TODO: startActivityForResult
     }
 
     public void showGraphs(View view){
@@ -31,9 +36,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void setMockData(View view){
-        // TODO: create mock data
-
-
+    public void openLogs(View view){
+        startActivity(new Intent(this, PoopLogActivity.class));
     }
 }
