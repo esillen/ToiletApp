@@ -18,10 +18,7 @@ import edu.derp.esillen.toiletapp.table_entries.ToiletCheckin;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int POOP_REQUEST_CODE = 112345123;
-    public static final String REQUEST_DATE_KEY = "REQUEST_DATE_KEY";
-    public static final String REQUEST_COLOR_KEY = "REQUEST_COLOR_KEY";
-    public static final String REQUEST_AMOUNT_KEY = "REQUEST_AMOUNT_KEY";
+    private final int POOP_REQUEST_CODE = 1234;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     public void checkin(View view){
         Intent intent = new Intent(this, PoopingActivity.class);
         startActivityForResult(intent, POOP_REQUEST_CODE);
-        // TODO: startActivityForResult
     }
 
     public void openLogs(View view){
@@ -53,27 +49,34 @@ public class MainActivity extends AppCompatActivity {
         switch(requestCode) {
             case (POOP_REQUEST_CODE) : {
                 if (resultCode == Activity.RESULT_OK) {
-                    long time = data.getLongExtra(REQUEST_DATE_KEY, -1);
-                    int amount = data.getIntExtra(REQUEST_AMOUNT_KEY, -1);
-                    int color = data.getIntExtra(REQUEST_COLOR_KEY, -1);
-                    logResult(time, amount, color);
+                    long date = data.getLongExtra(getResources().getString(R.string.request_date_key), -1);
+                    int amount = data.getIntExtra(getResources().getString(R.string.request_amount_key), -1);
+                    int color = data.getIntExtra(getResources().getString(R.string.request_color_key), -1);
+                    logResult(date, amount, color);
                 }
                 break;
             }
         }
     }
 
-    private void logResult(long time, int amount, int color){
+    private void logResult(long date, int amount, int color){
         ToiletCheckin tc = new ToiletCheckin();
-        tc.date = new Date(time);
+        tc.date = new Date(date);
         if (amount > 0) {
             tc.amount = amount;
             tc.color = color;
             tc.save();
             Toast.makeText(getApplicationContext(), "poop logged!", Toast.LENGTH_SHORT).show();
         }
+        else {
+            Toast.makeText(getApplicationContext(), "toilet visit logged!", Toast.LENGTH_SHORT).show();
+        }
+    }
 
-        Toast.makeText(getApplicationContext(), "toilet visit logged!", Toast.LENGTH_SHORT).show();
+    public void openProfile(View view){
 
     }
+
+
+
 }

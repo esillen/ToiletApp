@@ -23,14 +23,14 @@ public class PoopingActivity extends AppCompatActivity {
 
         int amount = ((SeekBar) findViewById(R.id.amountSeekBar)).getProgress();
         Intent output = new Intent();
-        output.putExtra(MainActivity.REQUEST_DATE_KEY, new Date().getTime());
-        output.putExtra(MainActivity.REQUEST_AMOUNT_KEY, amount);
+        output.putExtra(getResources().getString(R.string.request_date_key), new Date().getTime());
+        output.putExtra(getResources().getString(R.string.request_amount_key), amount);
         if (amount > 0){
             int red = ((SeekBar) findViewById(R.id.redSeekBar)).getProgress();
             int green = ((SeekBar) findViewById(R.id.redSeekBar)).getProgress();
             int blue = ((SeekBar) findViewById(R.id.redSeekBar)).getProgress();
             int color = (255 & 0xff) << 24 | (red & 0xff) << 16 | (green & 0xff) << 16 | (blue & 0xff);
-            output.putExtra(MainActivity.REQUEST_COLOR_KEY, color);
+            output.putExtra(getResources().getString(R.string.request_color_key), color);
         }
         setResult(RESULT_OK, output);
         finish();
