@@ -1,9 +1,11 @@
 package edu.derp.esillen.toiletapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.SeekBar;
 
 import java.util.Date;
 
@@ -17,15 +19,21 @@ public class PoopingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pooping);
     }
 
-
     public void commit(View view){
 
-        ToiletCheckin tc = new ToiletCheckin(new Date());
-        tc.save();
-
-        Log.d("POOPING ACTIVITY", "commited");
-
+        int amount = ((SeekBar) findViewById(R.id.amountSeekBar)).getProgress();
+        Intent output = new Intent();
+        output.putExtra(MainActivity.REQUEST_DATE_KEY, new Date().getTime());
+        output.putExtra(MainActivity.REQUEST_AMOUNT_KEY, amount);
+        if (amount > 0){
+            int red = ((SeekBar) findViewById(R.id.redSeekBar)).getProgress();
+            int green = ((SeekBar) findViewById(R.id.redSeekBar)).getProgress();
+            int blue = ((SeekBar) findViewById(R.id.redSeekBar)).getProgress();
+            int color = (255 & 0xff) << 24 | (red & 0xff) << 16 | (green & 0xff) << 16 | (blue & 0xff);
+            output.putExtra(MainActivity.REQUEST_COLOR_KEY, color);
+        }
+        setResult(RESULT_OK, output);
+        finish();
     }
-
 
 }

@@ -7,7 +7,7 @@ import java.util.Date;
 public class ToiletCheckin extends SugarRecord {
     public Date date;
     public int amount;
-    public int red, green, blue;
+    public int color;
 
     public ToiletCheckin(){}
 
@@ -15,12 +15,10 @@ public class ToiletCheckin extends SugarRecord {
         date = d;
     }
     // Happens only if there is some amount at all
-    public ToiletCheckin(Date d, int a, int r, int g, int b){
+    public ToiletCheckin(Date d, int a, int c){
         date = d;
         amount = a;
-        red = r;
-        green = g;
-        blue = b;
+        color = c;
     }
 
 }
