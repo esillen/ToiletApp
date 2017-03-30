@@ -1,11 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--  Single List Item Design -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:weightSum="1">
 
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-          android:id="@+id/label"
-          android:layout_width="fill_parent"
-          android:layout_height="fill_parent"
-          android:padding="10dip"
-          android:textSize="16dip"
-          android:textStyle="bold" >
-</TextView>
+
+    <View
+        android:id="@+id/color_indicator"
+        android:layout_width="15dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.07"
+        android:background="@drawable/rectangle"
+        android:padding="5dp"/><!--Make sure image is present in Drawable folder-->
+
+
+    <ImageView
+        android:id="@+id/bristolImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/shit_icon_type1"/>
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dip"
+        android:textSize="16dip"
+        android:textStyle="bold">
+    </TextView>
+
+
+</LinearLayout>
+
+

@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         /*
         SugarContext.terminate();
         SchemaGenerator schemaGenerator = new SchemaGenerator(getApplicationContext());
@@ -52,22 +53,26 @@ public class MainActivity extends AppCompatActivity {
                     long date = data.getLongExtra(getResources().getString(R.string.request_date_key), -1);
                     int amount = data.getIntExtra(getResources().getString(R.string.request_amount_key), -1);
                     int color = data.getIntExtra(getResources().getString(R.string.request_color_key), -1);
-                    logResult(date, amount, color);
+                    int consistency = data.getIntExtra(getResources().getString(R.string.request_consistency_key), -1);
+                    logResult(date, amount, color, consistency);
                 }
                 break;
             }
         }
     }
 
-    private void logResult(long date, int amount, int color){
+    private void logResult(long date, int amount, int color, int consistency){
         ToiletCheckin tc = new ToiletCheckin();
         tc.date = new Date(date);
+        // Log -1 if they don't exist. Handle somewhere else :)
+        tc.amount = amount;
+        tc.color = color;
+        tc.consistency = consistency;
+        tc.save();
+
         if (amount > 0) {
-            tc.amount = amount;
-            tc.color = color;
-            tc.save();
             Toast.makeText(getApplicationContext(), "poop logged!", Toast.LENGTH_SHORT).show();
-        }
+    }
         else {
             Toast.makeText(getApplicationContext(), "toilet visit logged!", Toast.LENGTH_SHORT).show();
         }
@@ -76,7 +81,5 @@ public class MainActivity extends AppCompatActivity {
     public void openProfile(View view){
         startActivity(new Intent(this, ProfileActivity.class));
     }
-
-
 
 }

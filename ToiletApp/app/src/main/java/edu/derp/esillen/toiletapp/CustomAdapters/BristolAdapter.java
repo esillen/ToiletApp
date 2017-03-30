@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import edu.derp.esillen.toiletapp.Globals.GlobalVars;
 import edu.derp.esillen.toiletapp.R;
 
 /**
@@ -16,18 +17,16 @@ import edu.derp.esillen.toiletapp.R;
 
 public class BristolAdapter extends BaseAdapter {
     Context context;
-    int consistencies[];
     LayoutInflater inflter;
 
-    public BristolAdapter(Context applicationContext, int[] c) {
+    public BristolAdapter(Context applicationContext) {
         context = applicationContext;
-        consistencies = c;
         inflter = (LayoutInflater.from(applicationContext));
     }
 
     @Override
     public int getCount() {
-        return consistencies.length;
+        return GlobalVars.consistencies.length;
     }
 
     @Override
@@ -37,16 +36,14 @@ public class BristolAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflter.inflate(R.layout.bristol_spinner_items, null);
         ImageView icon = (ImageView) view.findViewById(R.id.bristolImageView);
-        TextView names = (TextView) view.findViewById(R.id.bristolTextView);
-        icon.setImageResource(consistencies[i]);
-        names.setText("" + i);
+        icon.setImageResource(GlobalVars.consistencies[i]);
         return view;
     }
 }

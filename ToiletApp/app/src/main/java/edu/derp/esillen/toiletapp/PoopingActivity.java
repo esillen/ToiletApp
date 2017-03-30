@@ -14,10 +14,11 @@ import android.widget.Spinner;
 import java.util.Date;
 
 import edu.derp.esillen.toiletapp.CustomAdapters.BristolAdapter;
+import edu.derp.esillen.toiletapp.Globals.GlobalVars;
 
 public class PoopingActivity extends AppCompatActivity {
 
-    int consistencies[] = {R.drawable.bristol_type1, R.drawable.bristol_type2, R.drawable.bristol_type3, R.drawable.bristol_type4, R.drawable.bristol_type5, R.drawable.bristol_type6, R.drawable.bristol_type7};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public class PoopingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pooping);
 
         Spinner bristolSpinner = (Spinner) findViewById(R.id.bristolSpinner);
-        BristolAdapter adapter = new BristolAdapter(this, consistencies);
+        BristolAdapter adapter = new BristolAdapter(this);
         bristolSpinner.setAdapter(adapter);
     }
 
@@ -77,6 +78,19 @@ public class PoopingActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.color_indicator).setBackgroundColor(color);
+
+        ((SeekBar) findViewById(R.id.amountSeekBar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (progress > 0){findViewById(R.id.hasAmountLayout).setVisibility(View.VISIBLE);}
+                else{findViewById(R.id.hasAmountLayout).setVisibility(View.INVISIBLE);}
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
     }
 
     private void updateColor(){
@@ -95,10 +109,11 @@ public class PoopingActivity extends AppCompatActivity {
         output.putExtra(getResources().getString(R.string.request_amount_key), amount);
         if (amount > 0){
             int red = ((SeekBar) findViewById(R.id.redSeekBar)).getProgress();
-            int green = ((SeekBar) findViewById(R.id.redSeekBar)).getProgress();
-            int blue = ((SeekBar) findViewById(R.id.redSeekBar)).getProgress();
+            int green = ((SeekBar) findViewById(R.id.greenSeekBar)).getProgress();
+            int blue = ((SeekBar) findViewById(R.id.blueSeekBar)).getProgress();
             int color = (255 & 0xff) << 24 | (red & 0xff) << 16 | (green & 0xff) << 8 | (blue & 0xff);
             output.putExtra(getResources().getString(R.string.request_color_key), color);
+            output.putExtra(getResources().getString(R.string.request_consistency_key), ((Spinner) findViewById(R.id.bristolSpinner)).getSelectedItemPosition());
         }
         setResult(RESULT_OK, output);
         finish();

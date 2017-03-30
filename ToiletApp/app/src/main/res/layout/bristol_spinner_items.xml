@@ -6,17 +6,9 @@
 
     <ImageView
         android:id="@+id/bristolImageView"
-        android:layout_width="50dp"
+        android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:padding="5dp"
+        android:padding="1dp"
         android:src="@drawable/bristol_type1" /><!--Make sure image is present in Drawable folder-->
 
-    <TextView
-        android:id="@+id/bristolTextView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="5dp"
-        android:text="Demo"
-        android:textColor="#000" />
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -17,8 +18,10 @@ import com.jjoe64.graphview.series.DataPoint;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
+import edu.derp.esillen.toiletapp.CustomAdapters.LogEntryAdapter;
 import edu.derp.esillen.toiletapp.R;
 import edu.derp.esillen.toiletapp.table_entries.ToiletCheckin;
 
@@ -34,7 +37,6 @@ public class PoopLogActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         updateConfiguration(getResources().getConfiguration());
-
     }
 
     @Override
@@ -53,16 +55,22 @@ public class PoopLogActivity extends AppCompatActivity {
 
     public void showLogs(){
         List<ToiletCheckin> checkins = ToiletCheckin.listAll(ToiletCheckin.class);
-        ArrayList<String> strings = new ArrayList<>();
+        ArrayList<Date> log_entry_times = new ArrayList<>();
+        ArrayList<Integer> colors = new ArrayList<>();
+        ArrayList<Integer> consistencies = new ArrayList<>();
         for(ToiletCheckin tc:checkins){
-            strings.add(tc.date.toString());
+            log_entry_times.add(tc.date);
+            colors.add(tc.color);
+            consistencies.add(tc.consistency);
         }
-        ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.log_entry_style,strings);
+        Log.d("ASDFASDF",""+consistencies.size());
+        Log.d("ASDFASDF",""+colors.size());
+        Log.d("ASDFASDF",""+log_entry_times.size());
+        LogEntryAdapter adapter = new LogEntryAdapter(this, colors, consistencies, log_entry_times);
 
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
     }
-
 
     public void showGraphs(){
         viewSpectrogram();
@@ -101,9 +109,6 @@ public class PoopLogActivity extends AppCompatActivity {
         graph.getViewport().setScrollableY(true); // enables vertical scrolling
         graph.getViewport().setScalable(true); // enables horizontal zooming and scrolling
 
-
     }
-
-
 
 }
