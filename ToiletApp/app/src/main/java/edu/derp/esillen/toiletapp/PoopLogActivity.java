@@ -90,11 +90,18 @@ public class PoopLogActivity extends AppCompatActivity {
 
         // Update the graph
         BarGraphSeries<DataPoint> series = new BarGraphSeries<>(datapoints.toArray(new DataPoint[datapoints.size()]));
-        graph.addSeries(series);
 
         // Styling
         series.setDrawValuesOnTop(true);
         series.setValuesOnTopColor(Color.RED);
+
+        graph.addSeries(series);
+
+        graph.getViewport().setScrollable(true); // enables horizontal scrolling
+        graph.getViewport().setScrollableY(true); // enables vertical scrolling
+        graph.getViewport().setScalable(true); // enables horizontal zooming and scrolling
+
+
     }
 
 
