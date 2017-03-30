@@ -7,36 +7,112 @@
     android:layout_height="match_parent"
     tools:context="edu.derp.esillen.toiletapp.PoopingActivity">
 
-    <SeekBar
-        android:id="@+id/pooBar"
-        android:layout_width="259dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="49dp"
-        app:layout_constraintTop_toBottomOf="@+id/pooSwitch"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:text="Amount"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="68dp"
         android:onClick="commit"
         android:text="Commit"
-        android:layout_marginTop="72dp"
-        app:layout_constraintTop_toBottomOf="@+id/pooBar"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"/>
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        tools:layout_editor_absoluteY="435dp"/>
 
-    <Switch
-        android:id="@+id/pooSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="number 2?  "
+    <SeekBar
+        android:id="@+id/seekBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="245dp"
+        android:layout_height="30dp"
+        android:max="10"
+        android:progress="0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="73dp"
-        app:layout_constraintHorizontal_bias="0.501"/>
+        app:layout_constraintHorizontal_bias="0.503"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="207dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@android:drawable/editbox_background_normal"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Color"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <SeekBar
+            android:id="@+id/seekBar7"
+            android:layout_width="155dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+
+        <SeekBar
+            android:id="@+id/seekBar8"
+            android:layout_width="155dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBar9"/>
+
+        <SeekBar
+            android:id="@+id/seekBar9"
+            android:layout_width="155dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBar7"/>
+
+        <shape
+            android:id="@+id/shape"
+            android:layout_width="72dp"
+            android:layout_height="58dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="9dp"
+            android:shape="oval"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBar8"
+            tools:layout_editor_absoluteY="131dp">
+
+            <gradient
+                android:angle="270"
+                android:endColor="#80FF00FF"
+                android:startColor="#FFFF0000"/>
+        </shape>
+
+
+    </android.support.constraint.ConstraintLayout>
+
 </android.support.constraint.ConstraintLayout>
