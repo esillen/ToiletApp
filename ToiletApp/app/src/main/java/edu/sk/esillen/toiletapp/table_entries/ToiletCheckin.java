@@ -18,6 +18,4 @@ public class ToiletCheckin extends SugarRecord {
         date = d;
     }
 
-
-
 }

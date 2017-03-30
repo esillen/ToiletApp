@@ -34,4 +34,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GraphsActivity.class);
         startActivity(intent);
     }
+
+    public void setMockData(View view){
+        // TODO: create mock data
+
+
+    }
 }
