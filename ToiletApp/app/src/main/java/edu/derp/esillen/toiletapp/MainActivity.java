@@ -31,11 +31,6 @@ public class MainActivity extends AppCompatActivity {
         // TODO: startActivityForResult
     }
 
-    public void showGraphs(View view){
-        Intent intent = new Intent(this, GraphsActivity.class);
-        startActivity(intent);
-    }
-
     public void openLogs(View view){
         startActivity(new Intent(this, PoopLogActivity.class));
     }

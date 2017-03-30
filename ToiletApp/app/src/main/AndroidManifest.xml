@@ -34,8 +34,6 @@
         <activity android:name=".PoopingActivity"
                   android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".GraphsActivity">
-        </activity>
         <activity android:name=".PoopLogActivity">
         </activity>
     </application>
