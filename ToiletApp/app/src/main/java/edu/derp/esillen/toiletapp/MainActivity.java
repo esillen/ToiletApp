@@ -1,13 +1,9 @@
-package edu.sk.esillen.toiletapp;
+package edu.derp.esillen.toiletapp;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
-import com.orm.SchemaGenerator;
-import com.orm.SugarContext;
-import com.orm.SugarDb;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package edu.sk.esillen.toiletapp;
+package edu.derp.esillen.toiletapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.View;
 
 import java.util.Date;
 
-import edu.sk.esillen.toiletapp.table_entries.ToiletCheckin;
+import edu.derp.esillen.toiletapp.table_entries.ToiletCheckin;
 
 public class PoopingActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package edu.sk.esillen.toiletapp;
+package edu.derp.esillen.toiletapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="edu.sk.esillen.toiletapp">
+          package="edu.derp.esillen.toiletapp">
 
     <application
         android:name="com.orm.SugarApp"
@@ -21,18 +21,18 @@
             android:value="true"/>
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
-            android:value="edu.sk.esillen.toiletapp"/>
+            android:value="edu.derp.esillen.toiletapp"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name="edu.derp.esillen.toiletapp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".PoopingActivity">
+        <activity android:name="edu.derp.esillen.toiletapp.PoopingActivity">
         </activity>
-        <activity android:name=".GraphsActivity">
+        <activity android:name="edu.derp.esillen.toiletapp.GraphsActivity">
         </activity>
     </application>
 

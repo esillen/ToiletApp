@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.sk.esillen.toiletapp.PoopingActivity">
+    tools:context="edu.derp.esillen.toiletapp.PoopingActivity">
 
     <SeekBar
         android:id="@+id/timeBar"

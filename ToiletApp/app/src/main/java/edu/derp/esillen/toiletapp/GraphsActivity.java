@@ -1,22 +1,19 @@
-package edu.sk.esillen.toiletapp;
+package edu.derp.esillen.toiletapp;
 
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Random;
 
-import edu.sk.esillen.toiletapp.table_entries.ToiletCheckin;
+import edu.derp.esillen.toiletapp.table_entries.ToiletCheckin;
 
 public class GraphsActivity extends AppCompatActivity {
 

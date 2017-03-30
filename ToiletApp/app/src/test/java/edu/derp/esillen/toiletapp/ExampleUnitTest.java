@@ -1,4 +1,4 @@
-package edu.sk.esillen.toiletapp;
+package edu.derp.esillen.toiletapp;
 
 import org.junit.Test;
 
