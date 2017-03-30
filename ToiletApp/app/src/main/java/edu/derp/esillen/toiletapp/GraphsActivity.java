@@ -30,6 +30,8 @@ public class GraphsActivity extends AppCompatActivity {
 
         clearGraph();
 
+        viewSpectrogram(null);
+
     }
 
     private void clearGraph(){
@@ -37,7 +39,7 @@ public class GraphsActivity extends AppCompatActivity {
 
     }
 
-    public void viewTimesPerHour(View view){
+    public void viewSpectrogram(View view){
         List<ToiletCheckin> checkins = ToiletCheckin.listAll(ToiletCheckin.class);
         GraphView graph = (GraphView) findViewById(R.id.graphView);
 
