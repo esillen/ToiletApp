@@ -9,15 +9,24 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 
 import java.util.Date;
 
+import edu.derp.esillen.toiletapp.CustomAdapters.BristolAdapter;
+
 public class PoopingActivity extends AppCompatActivity {
+
+    int consistencies[] = {R.drawable.bristol_type1, R.drawable.bristol_type2, R.drawable.bristol_type3, R.drawable.bristol_type4, R.drawable.bristol_type5, R.drawable.bristol_type6, R.drawable.bristol_type7};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pooping);
+
+        Spinner bristolSpinner = (Spinner) findViewById(R.id.bristolSpinner);
+        BristolAdapter adapter = new BristolAdapter(this, consistencies);
+        bristolSpinner.setAdapter(adapter);
     }
 
     @Override
