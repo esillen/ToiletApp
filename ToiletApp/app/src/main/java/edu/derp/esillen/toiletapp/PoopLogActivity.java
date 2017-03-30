@@ -81,18 +81,17 @@ public class PoopLogActivity extends AppCompatActivity {
         GraphView graph = (GraphView) findViewById(R.id.graphView);
 
         // Get data from database
-        // TODO: change to hours instead of seconds
-        int times_per_hour[] = new int[60];
+        int times_per_hour[] = new int[24];
         Calendar calendar = Calendar.getInstance();
         for(ToiletCheckin checkin : checkins){
             calendar.setTime(checkin.date);
-            int hour = calendar.get(Calendar.SECOND);
+            int hour = calendar.get(Calendar.HOUR_OF_DAY);
             times_per_hour[hour] += 1;
         }
 
         // Set datapoints
         ArrayList<DataPoint> datapoints = new ArrayList<>();
-        for(int i=0;i<60;i++){
+        for(int i=0;i<24;i++){
             datapoints.add(new DataPoint(i, times_per_hour[i]));
         }
 
@@ -106,7 +105,7 @@ public class PoopLogActivity extends AppCompatActivity {
         graph.addSeries(series);
 
         graph.getViewport().setScrollable(true); // enables horizontal scrolling
-        graph.getViewport().setScrollableY(true); // enables vertical scrolling
+        // graph.getViewport().setScrollableY(true); // enables vertical scrolling
         graph.getViewport().setScalable(true); // enables horizontal zooming and scrolling
 
     }
