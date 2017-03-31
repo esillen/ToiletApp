@@ -31,12 +31,12 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/graphViewTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:text="TextView"
+        android:text="Distribution over Time of day"
         android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/button6"
         app:layout_constraintLeft_toRightOf="@+id/button6"
