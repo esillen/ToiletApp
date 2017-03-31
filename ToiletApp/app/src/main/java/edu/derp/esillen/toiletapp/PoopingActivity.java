@@ -15,17 +15,19 @@ import java.util.Date;
 
 import edu.derp.esillen.toiletapp.CustomAdapters.BristolAdapter;
 import edu.derp.esillen.toiletapp.Globals.GlobalVars;
+import edu.derp.esillen.toiletapp.table_entries.ToiletCheckin;
 
 public class PoopingActivity extends AppCompatActivity {
 
-
+    SeekBar redSeekBar, greenSeekBar, blueSeekBar, amountSeekBar;
+    Spinner bristolSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pooping);
 
-        Spinner bristolSpinner = (Spinner) findViewById(R.id.bristolSpinner);
+        bristolSpinner = (Spinner) findViewById(R.id.bristolSpinner);
         BristolAdapter adapter = new BristolAdapter(this);
         bristolSpinner.setAdapter(adapter);
     }
@@ -38,13 +40,16 @@ public class PoopingActivity extends AppCompatActivity {
 
         Log.d("COLOR",""+color);
 
-        SeekBar redSeekBar = (SeekBar) findViewById(R.id.redSeekBar);
-        SeekBar greenSeekBar = (SeekBar) findViewById(R.id.greenSeekBar);
-        SeekBar blueSeekBar = (SeekBar) findViewById(R.id.blueSeekBar);
+        redSeekBar = (SeekBar) findViewById(R.id.redSeekBar);
+        greenSeekBar = (SeekBar) findViewById(R.id.greenSeekBar);
+        blueSeekBar = (SeekBar) findViewById(R.id.blueSeekBar);
+        amountSeekBar = (SeekBar) findViewById(R.id.amountSeekBar);
 
         redSeekBar.setProgress(Color.red(color));
         greenSeekBar.setProgress(Color.green(color));
         blueSeekBar.setProgress(Color.blue(color));
+
+
 
         redSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -77,9 +82,7 @@ public class PoopingActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-        findViewById(R.id.color_indicator).setBackgroundColor(color);
-
-        ((SeekBar) findViewById(R.id.amountSeekBar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        amountSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (progress > 0){findViewById(R.id.hasAmountLayout).setVisibility(View.VISIBLE);}
@@ -91,6 +94,25 @@ public class PoopingActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
+        findViewById(R.id.color_indicator).setBackgroundColor(color);
+
+        setEntryToMatchIntent();
+
+    }
+
+    private void setEntryToMatchIntent(){
+        long id = getIntent().getLongExtra(getResources().getString(R.string.request_checkin_id_key), -1);
+        if (id == -1) {return;} // Then there were no intent
+
+        ToiletCheckin t_c_i = ToiletCheckin.findById(ToiletCheckin.class, id);
+        int color = t_c_i.color;
+
+        redSeekBar.setProgress(Color.red(color));
+        greenSeekBar.setProgress(Color.green(color));
+        blueSeekBar.setProgress(Color.blue(color));
+
+        amountSeekBar.setProgress(t_c_i.amount);
+        bristolSpinner.setSelection(t_c_i.consistency);
     }
 
     private void updateColor(){

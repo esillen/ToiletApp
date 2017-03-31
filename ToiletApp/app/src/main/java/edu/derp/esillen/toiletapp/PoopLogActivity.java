@@ -101,7 +101,7 @@ public class PoopLogActivity extends AppCompatActivity implements AdapterView.On
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(this, VisitViewActivity.class);
-        intent.putExtra(getResources().getString(R.string.request_checkin_id_key), (int)id);
+        intent.putExtra(getResources().getString(R.string.request_checkin_id_key), id);
         startActivity(intent);
     }
 }
