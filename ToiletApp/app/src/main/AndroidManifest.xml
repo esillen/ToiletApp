@@ -42,7 +42,8 @@
             android:name=".ProfileActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".VisitViewActivity">
+        <activity android:name=".VisitViewActivity"
+                  android:screenOrientation="portrait">
         </activity>
     </application>
 

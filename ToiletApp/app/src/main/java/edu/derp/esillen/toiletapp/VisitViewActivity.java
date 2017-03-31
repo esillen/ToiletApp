@@ -48,11 +48,12 @@ public class VisitViewActivity extends AppCompatActivity {
 
 
     public void editVisit(View view){
-
+        // TODO: go to edit and pass some intents
     }
 
     public void deleteVisit(View view){
-
+        currently_viewed_checkin.delete();
+        finish();
     }
 
 }

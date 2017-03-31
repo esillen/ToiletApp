@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ import edu.derp.esillen.toiletapp.CustomAdapters.LogEntryAdapter;
 import edu.derp.esillen.toiletapp.R;
 import edu.derp.esillen.toiletapp.table_entries.ToiletCheckin;
 
-public class PoopLogActivity extends AppCompatActivity {
+public class PoopLogActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,21 +58,10 @@ public class PoopLogActivity extends AppCompatActivity {
     public void showLogs(){
         List<ToiletCheckin> checkins = ToiletCheckin.listAll(ToiletCheckin.class);
         Collections.reverse(checkins);
-        ArrayList<Date> log_entry_times = new ArrayList<>();
-        ArrayList<Integer> colors = new ArrayList<>();
-        ArrayList<Integer> consistencies = new ArrayList<>();
-        for(ToiletCheckin tc:checkins){
-            log_entry_times.add(tc.date);
-            colors.add(tc.color);
-            consistencies.add(tc.consistency);
-        }
-        Log.d("ASDFASDF",""+consistencies.size());
-        Log.d("ASDFASDF",""+colors.size());
-        Log.d("ASDFASDF",""+log_entry_times.size());
-        LogEntryAdapter adapter = new LogEntryAdapter(this, colors, consistencies, log_entry_times);
-
+        LogEntryAdapter adapter = new LogEntryAdapter(this, checkins);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
     }
 
     public void showGraphs(){
@@ -103,13 +93,15 @@ public class PoopLogActivity extends AppCompatActivity {
         // Styling
         series.setDrawValuesOnTop(true);
         series.setValuesOnTopColor(Color.RED);
-
         graph.addSeries(series);
-
         graph.getViewport().setScrollable(true); // enables horizontal scrolling
-        // graph.getViewport().setScrollableY(true); // enables vertical scrolling
         graph.getViewport().setScalable(true); // enables horizontal zooming and scrolling
-
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(this, VisitViewActivity.class);
+        intent.putExtra(getResources().getString(R.string.request_checkin_id_key), (int)id);
+        startActivity(intent);
+    }
 }
