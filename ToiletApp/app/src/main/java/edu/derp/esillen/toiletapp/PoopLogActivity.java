@@ -29,6 +29,12 @@ import edu.derp.esillen.toiletapp.table_entries.ToiletCheckin;
 
 public class PoopLogActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
+    private final int TIME_OF_DAY_GRAPH_ID = 0;
+    private final int CONSISTENCY_GRAPH_ID = 1;
+    private final int TIMELINE_GRAPH_ID = 2;
+    private int current_graph_id = 0;
+    String [] graph_titles = new String[]{"Distribution over Time of day", "Distribution over consistency", "Timeline"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +45,7 @@ public class PoopLogActivity extends AppCompatActivity implements AdapterView.On
     protected void onResume(){
         super.onResume();
         updateConfiguration(getResources().getConfiguration());
+        current_graph_id = 0;
     }
 
     @Override
@@ -65,10 +72,46 @@ public class PoopLogActivity extends AppCompatActivity implements AdapterView.On
     }
 
     public void showGraphs(){
-        viewSpectrogram();
+        viewTimeOfDayDiagram();
     }
 
-    public void viewSpectrogram(){
+
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(this, VisitViewActivity.class);
+        intent.putExtra(getResources().getString(R.string.request_checkin_id_key), id);
+        startActivity(intent);
+    }
+
+    public void onPreviousGraphButtonPressed(View view){
+        current_graph_id--;
+        if (current_graph_id <0){current_graph_id = graph_titles.length-1;}
+        setGraph();
+    }
+
+    public void onNextGraphButtonPressed(View view){
+        current_graph_id++;
+        if (current_graph_id >= graph_titles.length){current_graph_id = 0;}
+    }
+
+    private void setGraph(){
+        switch (current_graph_id){
+            case TIME_OF_DAY_GRAPH_ID:
+                viewTimeOfDayDiagram();
+                break;
+            case CONSISTENCY_GRAPH_ID:
+                viewConsistencyDiagram();
+                break;
+            case TIMELINE_GRAPH_ID:
+                viewTimeline();
+                break;
+        }
+    }
+
+
+    // These methods update the text on top and updates the diagram
+    public void viewTimeOfDayDiagram(){
         List<ToiletCheckin> checkins = ToiletCheckin.listAll(ToiletCheckin.class);
         GraphView graph = (GraphView) findViewById(R.id.graphView);
 
@@ -97,11 +140,6 @@ public class PoopLogActivity extends AppCompatActivity implements AdapterView.On
         graph.getViewport().setScrollable(true); // enables horizontal scrolling
         graph.getViewport().setScalable(true); // enables horizontal zooming and scrolling
     }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, VisitViewActivity.class);
-        intent.putExtra(getResources().getString(R.string.request_checkin_id_key), id);
-        startActivity(intent);
-    }
+    public void viewConsistencyDiagram(){}
+    public void viewTimeline(){}
 }
