@@ -1,8 +1,10 @@
 package edu.derp.esillen.toiletapp;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,15 +55,24 @@ public class VisitViewActivity extends AppCompatActivity {
     }
 
 
-    public void editVisit(View view){
+    public void onEditButtonPressed(View view){
         Intent intent = new Intent(this, PoopingActivity.class);
         intent.putExtra(getResources().getString(R.string.request_checkin_id_key), currently_viewed_checkin.getId());
         startActivityForResult(intent, ID_REQUEST_CODE);
     }
 
-    public void deleteVisit(View view){
-        currently_viewed_checkin.delete();
-        finish();
+    public void onDeleteButtonPreessed(View view){
+        new AlertDialog.Builder(this)
+                .setMessage("Really delete entry?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        currently_viewed_checkin.delete();
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 
 
@@ -91,8 +102,5 @@ public class VisitViewActivity extends AppCompatActivity {
             }
         }
     }
-
-
-
 
 }
