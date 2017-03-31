@@ -18,5 +18,6 @@
     <string name="request_amount_key">REQUEST_AMOUNT_KEY</string>
     <string name="request_color_key">REQUEST_COLOR_KEY</string>
     <string name="request_consistency_key">REQUEST_CONSISTENCY_KEY</string>
+    <string name="request_checkin_id_key">REQUEST_CHECKIN_ID_KEY</string>
 
 </resources>
