@@ -18,6 +18,7 @@ import com.jjoe64.graphview.series.DataPoint;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -55,6 +56,7 @@ public class PoopLogActivity extends AppCompatActivity {
 
     public void showLogs(){
         List<ToiletCheckin> checkins = ToiletCheckin.listAll(ToiletCheckin.class);
+        Collections.reverse(checkins);
         ArrayList<Date> log_entry_times = new ArrayList<>();
         ArrayList<Integer> colors = new ArrayList<>();
         ArrayList<Integer> consistencies = new ArrayList<>();
