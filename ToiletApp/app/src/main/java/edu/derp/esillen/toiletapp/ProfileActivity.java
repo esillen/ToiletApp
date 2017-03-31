@@ -8,6 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.SeekBar;
+import android.widget.TextView;
+
+import java.util.List;
+
+import edu.derp.esillen.toiletapp.table_entries.ToiletCheckin;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -59,6 +64,15 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.color_indicator).setBackgroundColor(color);
+
+        List<ToiletCheckin> checkins = ToiletCheckin.listAll(ToiletCheckin.class);
+        ((TextView) findViewById(R.id.numberOfVisitsText)).setText("Number of visits: " + checkins.size());
+        int poops_total = 0;
+        for(ToiletCheckin tc : checkins){
+            if (tc.amount > 0){ poops_total += 1;}
+        }
+        ((TextView) findViewById(R.id.numberOfPoopsText)).setText("Number of poops: " + poops_total);
+
     }
 
     private void updateColor(int r, int g, int b){
